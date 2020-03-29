@@ -1,0 +1,188 @@
+.Head {
+  text-align: center;
+  margin: 5px;
+}
+
+.Links {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.Links h3 {
+  margin: 1% 2%;
+}
+
+.Content {
+  background: #f5f5f5;
+  height: 1200px;
+}
+
+.Wrapper {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  margin: 0 2%;
+}
+
+.Cul {
+  background: #f5f5f5 url('../img/cul-mob.jpg') no-repeat;
+  height: 1200px;
+}
+
+.Bkad {
+  background: #f5f5f5 url('../img/bkad-mob.jpg') no-repeat;
+  height: 1200px;
+}
+
+.DigEco {
+  background: #f5f5f5 url('../img/digeco-mob.jpg') no-repeat;
+  height: 1300px;
+}
+
+.Button {
+  margin: auto 3%;
+  padding: 1%;
+  border-radius: 25px;
+}
+
+.Nat h3 {
+  font-size: 32px;
+}
+
+.Nat div {
+  display: flex;
+}
+
+.Nat p {
+  font-size: 18px;
+}
+
+.Reg  h3 {
+  font-size: 32px;
+}
+
+.Reg ul {
+  font-size: 18px;
+}
+
+.Reg li {
+  margin: 2% 0;
+}
+
+.Reg a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .Reg  h3 {
+    font-size: 36px;
+  }
+
+  .Reg ul {
+    font-size: 28px;
+  }
+
+  .Nat p {
+    font-size: 28px;
+  }
+
+  .Nat h3 {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Head {
+    text-align: center;
+    margin: 5px;
+  }
+
+  .Links {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: white;
+    cursor: pointer;
+  }
+
+  .Content {
+    background: #f5f5f5;
+    height: 700px;
+  }
+
+  .Wrapper {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    margin: 0 2%;
+  }
+
+  .Cul {
+    background: #f5f5f5 url('../img/cul.jpg') no-repeat;
+    height: 700px;
+  }
+
+  .Bkad {
+    background: #f5f5f5 url('../img/bkad.jpg') no-repeat;
+    height: 700px;
+  }
+
+  .DigEco {
+    background: #f5f5f5 url('../img/digeco.jpg') no-repeat;
+    height: 700px;
+  }
+
+  .Button {
+    margin: auto 3%;
+    padding: 1%;
+    border-radius: 25px;
+  }
+
+  .Nat {
+    width: 45%;
+    margin: auto 3%;
+  }
+
+  .Nat h3 {
+    font-size: 32px
+  }
+
+  .Prjct {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .Nat div {
+    display: flex;
+  }
+
+  .Nat p {
+    font-size: 24px
+  }
+
+  .Reg {
+    width: 35%;
+    margin: auto 3%;
+  }
+
+  .Reg  h3 {
+    font-size: 32px
+  }
+
+  .Reg ul {
+    font-size: 24px
+  }
+
+  .Reg li {
+    margin: 2% 0;
+  }
+
+  .Reg a {
+    color: white;
+    text-decoration: none;
+  }
+}
