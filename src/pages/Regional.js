@@ -81,13 +81,15 @@ const Regional = ({match}) => {
       )
     }
 
-//    const renderVis = () => {
-//      return itemReg.tables1.data.map((el, i) => (
-//      <div key={i}>
-//        {renderChart({i},300,300)}
-//      </div>
-//      ))
-//    }
+    const renderVis = () => {
+      const listCharts=[];
+      for (let i = 0; i < itemReg.tables1.data.length; i++ ){
+        listCharts.push(<div key={i}>{renderChart(i,300,300)}</div>);
+      }
+      return (
+        listCharts
+      )
+    }
 
     return(
       <div className={classes.Reg}>
@@ -103,7 +105,7 @@ const Regional = ({match}) => {
         <div>
           <h3>Результаты:</h3>
           <div className={classes.Vis}>
-            {renderChart(0,300,300)}
+            {renderVis()}
           </div>
           <table style={{'border': '1px solid black', 'width': '80%', 'margin': '45px auto 45px'}}>
           <tbody>
