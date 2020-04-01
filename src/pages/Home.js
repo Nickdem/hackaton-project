@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import classes from './Home.module.css'
 
 const Home = () => {
+  document.title = "Главная"
   const data = useSelector(state => state.reducer)
   const dispatch = useDispatch()
 

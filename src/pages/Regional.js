@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {giveMeData} from '../store/action'
 import {Link} from "react-router-dom";
@@ -51,15 +51,29 @@ const Regional = ({match}) => {
     ))
   }
 
+  const [buttonName, setButtonName] = useState('Показать таблицей')
+  const [drawer, setDrawer] = useState(false)
+
+  const buttonClickHandler = () => {
+    if(buttonName === "Показать таблицей"){
+      setButtonName('Показать графиком')
+    } else if(buttonName === "Показать графиком"){
+      setButtonName('Показать таблицей')
+    }
+
+    setDrawer(!drawer)
+  }
+
   const renderSome = () => {
     let item = store.natProjects.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
     let itemReg = item.regPrjcts.find(i=> i.url_protocol === match.params.id)
+    document.title = `${itemReg.Name_Project}`
     const renderChart = (k,width,height,idtext) => {
       const datas=[]
 
       for(let i=1;i<itemReg.tables1.data[0].length;i++){
         if(itemReg.tables1.data[k][i] !== 'н/д'){
-          datas.push({x:itemReg.tables1.columns[i],y:parseInt(itemReg.tables1.data[k][i],10)})
+          datas.push({x:itemReg.tables1.columns[i],y:parseFloat(itemReg.tables1.data[k][i].replace(",", "."))})
         }
       }
 
@@ -104,19 +118,22 @@ const Regional = ({match}) => {
         <h3>Общая цель: {itemReg.Target}</h3>
         <div>
           <h3>Результаты:</h3>
-          <div className={classes.Vis}>
-            {renderVis()}
-          </div>
-          <table style={{'border': '1px solid black', 'width': '80%', 'margin': '45px auto 45px'}}>
-          <tbody>
-            <tr>
-              {renderTh(itemReg.tables1.columns)}
-            </tr>
+          <button onClick={()=> buttonClickHandler()}>{buttonName}</button>
+          {!drawer
+           ?<div className={classes.Vis}>
+              {renderVis()}
+            </div>
+           :<table style={{'border': '1px solid black', 'width': '80%', 'margin': '45px auto 45px'}}>
+              <tbody>
+                <tr>
+                  {renderTh(itemReg.tables1.columns)}
+                </tr>
 
-            {renderTr(itemReg.tables1.data)}
+              {renderTr(itemReg.tables1.data)}
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          }
           {match.params.id === 'bkad1'
           // eslint-disable-next-line
           ? <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a264c5718698326333e8ae05ff8ed8e74fdc540c1eba298df08333907715721&amp;source=constructor" className={classes.Frame} frameBorder="0"></iframe>

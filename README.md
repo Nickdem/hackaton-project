@@ -1,4 +1,5 @@
-Изменения проекта после проведения хакатона.
+Ветка с изменениями проекта после проведения хакатона.
+Начальное состояние(отправленное на проверку) в ветке [initial](https://github.com/Nickdem/hackaton-project/tree/initial).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
