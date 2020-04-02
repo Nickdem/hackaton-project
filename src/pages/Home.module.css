@@ -3,16 +3,34 @@
   margin: 5px;
 }
 
+.Loader {
+  text-align: center;
+  margin: 15% 0;
+}
+
 .Links {
   display: flex;
   flex-direction: column;
   text-align: center;
   color: white;
-  cursor: pointer;
 }
 
-.Links h3 {
+.Link {
   margin: 1% 2%;
+  cursor: pointer;
+  color: #d3d3d3;
+}
+
+.Link:hover,
+.Link:focus {
+  color: #fffafa;
+}
+
+.ActiveLink {
+  margin: 1% 2%;
+  color: white;
+  border-bottom: 2px solid white;
+  cursor: not-allowed;
 }
 
 .Content {
@@ -30,69 +48,25 @@
 .Cul {
   background: #f5f5f5 url('../img/cul-mob.jpg') no-repeat;
   height: 1200px;
+  transition-duration: .5s;
 }
 
 .Bkad {
   background: #f5f5f5 url('../img/bkad-mob.jpg') no-repeat;
   height: 1200px;
+  transition-duration: .5s;
 }
 
 .DigEco {
   background: #f5f5f5 url('../img/digeco-mob.jpg') no-repeat;
   height: 1300px;
+  transition-duration: .5s;
 }
 
 .Button {
   margin: auto 3%;
   padding: 1%;
   border-radius: 25px;
-}
-
-.Nat h3 {
-  font-size: 32px;
-}
-
-.Nat div {
-  display: flex;
-}
-
-.Nat p {
-  font-size: 18px;
-}
-
-.Reg  h3 {
-  font-size: 32px;
-}
-
-.Reg ul {
-  font-size: 18px;
-}
-
-.Reg li {
-  margin: 2% 0;
-}
-
-.Reg a {
-  color: white;
-  text-decoration: none;
-}
-
-@media (min-width: 768px) {
-  .Reg  h3 {
-    font-size: 36px;
-  }
-
-  .Reg ul {
-    font-size: 28px;
-  }
-
-  .Nat p {
-    font-size: 28px;
-  }
-
-  .Nat h3 {
-    font-size: 36px;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -106,7 +80,6 @@
     justify-content: center;
     flex-direction: row;
     color: white;
-    cursor: pointer;
   }
 
   .Content {
@@ -140,49 +113,5 @@
     margin: auto 3%;
     padding: 1%;
     border-radius: 25px;
-  }
-
-  .Nat {
-    width: 45%;
-    margin: auto 3%;
-  }
-
-  .Nat h3 {
-    font-size: 32px
-  }
-
-  .Prjct {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .Nat div {
-    display: flex;
-  }
-
-  .Nat p {
-    font-size: 24px
-  }
-
-  .Reg {
-    width: 35%;
-    margin: auto 3%;
-  }
-
-  .Reg  h3 {
-    font-size: 32px
-  }
-
-  .Reg ul {
-    font-size: 24px
-  }
-
-  .Reg li {
-    margin: 2% 0;
-  }
-
-  .Reg a {
-    color: white;
-    text-decoration: none;
   }
 }

@@ -19,7 +19,7 @@ const Regional = ({match}) => {
   useEffect(() => {
     dispatch(giveMeData());
     window.scrollTo({
-      top: 0,
+      top: 80,
       behavior: 'smooth'
     })
     // eslint-disable-next-line
