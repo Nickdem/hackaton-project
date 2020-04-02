@@ -1,0 +1,10 @@
+.Loader {
+    text-align: center;
+    margin: 50% 0 75%;
+}
+
+@media (min-width: 1200px) {
+  .Loader {
+    margin: 15% 0 25%;
+  }
+}

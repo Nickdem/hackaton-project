@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {giveMeData} from '../store/action'
 import classes from './Home.module.css'
 import HomeProject from '../components/HomeProject'
+import Footer from '../components/Footer'
+import Loader from '../components/Loader'
 
 const Home = () => {
   document.title = "Главная"
@@ -60,8 +62,9 @@ const Home = () => {
               <button className={classes.Button} onClick={()=>setCount(count + 1)} disabled={move}>&gt;	</button>
             </div>
           </div>
-        : <h1 className={classes.Loader}>Подождите немного! Идёт загрузка...</h1>
+        : <Loader mess={"Подождите немного! Идёт загрузка..."} />
         }
+        <Footer />
     </>
   )
 }

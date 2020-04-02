@@ -3,6 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {giveMeData} from '../store/action'
 import {Link} from "react-router-dom";
 import classes from './Regional.module.css'
+import Footer from '../components/Footer'
+import Loader from '../components/Loader'
 import {
   XYPlot,
   XAxis,
@@ -24,7 +26,6 @@ const Regional = ({match}) => {
     })
     // eslint-disable-next-line
   }, []);
-
 
   const renderTh = (th) => {
     return th.map((column, index) => (
@@ -66,7 +67,11 @@ const Regional = ({match}) => {
 
   const renderSome = () => {
     let item = store.natProjects.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
+    if(item === undefined){
+      return (<Loader mess={"Страница не существует!"}/>)
+    }
     let itemReg = item.regPrjcts.find(i=> i.url_protocol === match.params.id)
+
     document.title = `${itemReg.Name_Project}`
     const renderChart = (k,width,height,idtext) => {
       const datas=[]
@@ -157,8 +162,9 @@ const Regional = ({match}) => {
       {store.loading === false
       ?
       <>{renderSome()}</>
-      : <h3>Идет загрузка...</h3>
+      : <Loader mess={"Подождите немного! Идёт загрузка..."} />
       }
+      <Footer />
     </>
   )
 }

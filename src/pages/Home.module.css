@@ -3,11 +3,6 @@
   margin: 5px;
 }
 
-.Loader {
-  text-align: center;
-  margin: 15% 0 25%;
-}
-
 .Links {
   display: flex;
   flex-direction: column;

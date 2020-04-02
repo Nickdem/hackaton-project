@@ -1,0 +1,14 @@
+.Footer {
+  display: flex;
+  margin-top: 9px;
+  justify-content: space-between;
+  background: #f5f5f5;
+}
+
+.Footer span {
+  margin: auto 10px;
+}
+
+.Footer p {
+  margin: 10px 10px 5px 0;
+}
