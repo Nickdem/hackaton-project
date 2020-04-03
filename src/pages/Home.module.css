@@ -59,8 +59,6 @@
 }
 
 .Button {
-  margin: auto 3%;
-  padding: 1%;
   border-radius: 25px;
 }
 
@@ -104,9 +102,23 @@
     height: 700px;
   }
 
-  .Button {
-    margin: auto 3%;
-    padding: 1%;
-    border-radius: 25px;
+  .Button:first-child {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    z-index: 2;
+    left: 0px;
+    height: 630px;
+    width: 50%;
+  }
+
+  .Button:last-child {
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    right: 0px;
+    height: 630px;
+    width: 50%;
   }
 }

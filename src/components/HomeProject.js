@@ -19,8 +19,8 @@ const HomeProject = ({natProject}) => {
       <div className={classes.Nat}>
         <h3>{natProject.natProjectsName}:</h3>
         <div>
-          <p>Срок реализации: <strong>{natProject.natProjectsDes.time}</strong></p>
-          <p>Бюджет проекта: <strong>{natProject.natProjectsDes.budget}</strong></p>
+          <p>Срок реализации: <br/><strong>{natProject.natProjectsDes.time}</strong></p>
+          <p>Бюджет проекта: <br/><strong>{natProject.natProjectsDes.budget}</strong></p>
         </div>
         <p>{natProject.natProjectsDes.par}</p>
       </div>
