@@ -5,8 +5,9 @@
 }
 
 .Reg {
-  margin: 0 auto;
-  width: 90%;
+  margin: 0 2%;
+  padding: 2%;
+  background: #f5f5f5;
 }
 
 .Par {
@@ -15,7 +16,7 @@
 }
 
 .Par p {
-  background: #f5f5f5;
+  background: #fff;
   width: 30%;
 }
 
@@ -42,7 +43,7 @@
 }
 
 .Content div {
-  background: #f5f5f5;
+  background: #fff;
   width: 80%;
   padding: 15px;
   margin: 5px;

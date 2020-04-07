@@ -121,7 +121,7 @@ const Regional = ({match}) => {
           <p>Куратор - {itemReg.Curator}</p>
         </div>
         <h3>Общая цель: {itemReg.Target}</h3>
-        <div>
+        <div style={{borderTop: '3px solid #dcdcdc'}}>
           <h3>Результаты:</h3>
           <button onClick={()=> buttonClickHandler()}>{buttonName}</button>
           {!drawer

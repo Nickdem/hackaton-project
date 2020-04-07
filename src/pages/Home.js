@@ -57,9 +57,9 @@ const Home = () => {
         ? <div className={customStyle[data.natProjects[count].natProjectsUrl] ? customStyle[data.natProjects[count].natProjectsUrl] : classes.Content}>
             <div className={classes.Links}>{renderLinks()}</div>
             <div className={classes.Wrapper}>
-              <button className={classes.Button} onClick={()=>setCount(count - 1)} disabled={back}></button>
+              <button className={back ? classes.ButtonHidden : classes.Button} onClick={()=>setCount(count - 1)} disabled={back}></button>
               <HomeProject natProject={data.natProjects[count]}/>
-              <button className={classes.Button} onClick={()=>setCount(count + 1)} disabled={move}></button>
+              <button className={move ? classes.ButtonHidden : classes.Button} onClick={()=>setCount(count + 1)} disabled={move}></button>
             </div>
           </div>
         : <Loader mess={"Подождите немного! Идёт загрузка..."} />

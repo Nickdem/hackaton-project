@@ -60,6 +60,14 @@
 
 .Button {
   border-radius: 25px;
+  margin: auto 1%;
+  padding: 2%;
+}
+
+.ButtonHidden {
+  padding: 2%;
+  margin: auto 1%;
+  visibility: hidden;
 }
 
 @media (min-width: 1200px) {
@@ -120,5 +128,9 @@
     right: 0px;
     height: 630px;
     width: 50%;
+  }
+
+  .ButtonHidden {
+    display: none;
   }
 }
