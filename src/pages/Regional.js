@@ -113,6 +113,19 @@ const Regional = ({match}) => {
     return(
       <div className={classes.Reg}>
         <h1>Национальный проект: {item.natProjectsName}</h1>
+        <ol className={classes.Links}>
+          {item.regPrjcts.map((reg, index) => (
+            <li key={index}>
+              <Link 
+                className={reg.url_protocol !== match.params.id ? classes.Link : classes.ActiveLink} 
+                to={`/regional-project/${reg.url_protocol}`}
+                onClick={reg.url_protocol !== match.params.id ? null : e => e.preventDefault()}
+              >
+                {reg.Name_Project}
+              </Link>
+            </li>
+          ))}
+        </ol>
         <h2>Региональный проект: {itemReg.Name_Project}</h2>
         <small>Дата начала и окончания: {itemReg.Deadlines}</small>
         <div className={classes.Par}>
