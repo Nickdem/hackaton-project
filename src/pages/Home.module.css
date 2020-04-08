@@ -133,4 +133,15 @@
   .ButtonHidden {
     display: none;
   }
+
+  .News {
+    margin: 2%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 1%;
+  }
+
+  .News:hover {
+    box-shadow: 0 0 10px grey;
+  }
 }

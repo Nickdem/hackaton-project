@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {giveMeData} from '../store/action'
+import {giveMeData, giveMeNews} from '../store/action'
 import classes from './Home.module.css'
 import HomeProject from '../components/HomeProject'
 import Footer from '../components/Footer'
@@ -13,16 +13,9 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(giveMeData());
+    dispatch(giveMeNews());
     // eslint-disable-next-line
   }, []);
-
-  const renderLinks = () => {
-	  return data.natProjects.map((prjct, index) => (
-      <h3 key={index} className={count !== index ? classes.Link : classes.ActiveLink} onClick={()=>setCount(index)}>
-        {prjct.natProjectsName}
-      </h3>
-    ))
-  }
 
   const [move, setMove] = useState(false)
   const [count, setCount] = useState(0)
@@ -48,6 +41,14 @@ const Home = () => {
     'bkad': classes.Bkad
   }
 
+  const renderLinks = () => {
+	  return data.natProjects.map((prjct, index) => (
+      <h3 key={index} className={count !== index ? classes.Link : classes.ActiveLink} onClick={()=>setCount(index)}>
+        {prjct.natProjectsName}
+      </h3>
+    ))
+  }
+
   return (
     <>
       <div className={classes.Head}>
@@ -63,6 +64,18 @@ const Home = () => {
             </div>
           </div>
         : <Loader mess={"Подождите немного! Идёт загрузка..."} />
+        }
+        <h2 style={{marginLeft: '2%'}}>Последние новости:</h2>
+        {data.loading === false
+        ? data.news.map((news, index) => {
+            return(
+              <div key={index} className={classes.News}>
+                <h3>{news.name}</h3>
+                <p>{news.par}</p>
+              </div>
+            )
+          })
+        : null
         }
         <Footer />
     </>
