@@ -17,23 +17,7 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
 
-  const [move, setMove] = useState(false)
   const [count, setCount] = useState(0)
-  const [back, setBack] = useState(false)
-
-  useEffect(() =>{
-    if(count === 0){
-      setBack(true)
-      setMove(false)
-    }else if(count + 1 === data.natProjects.length){
-      setMove(true)
-      setBack(false)
-    }else{
-      setBack(false)
-      setMove(false)
-    }
-    // eslint-disable-next-line
-  }, [count])
 
   const customStyle = {
     'cul': classes.Cul,
@@ -58,14 +42,17 @@ const Home = () => {
         ? <div className={customStyle[data.natProjects[count].natProjectsUrl] ? customStyle[data.natProjects[count].natProjectsUrl] : classes.Content}>
             <div className={classes.Links}>{renderLinks()}</div>
             <div className={classes.Wrapper}>
-              <button className={back ? classes.ButtonHidden : classes.Button} onClick={()=>setCount(count - 1)} disabled={back}></button>
+              <button className={classes.Button} onClick={()=> count === 0 ? setCount(data.natProjects.length - 1) : setCount(count - 1)}></button>
               <HomeProject natProject={data.natProjects[count]}/>
-              <button className={move ? classes.ButtonHidden : classes.Button} onClick={()=>setCount(count + 1)} disabled={move}></button>
+              <button className={classes.Button} onClick={()=> count === data.natProjects.length - 1 ? setCount(0) : setCount(count + 1)}></button>
             </div>
           </div>
         : <Loader mess={"Подождите немного! Идёт загрузка..."} />
         }
-        <h2 style={{marginLeft: '2%'}}>Последние новости:</h2>
+        <div>
+          <p style={{'width': '75%', textAlign: 'center', 'margin': ' 5% auto', fontSize: '24px'}}>Национальные проекты направлены на обеспечение прорывного научно-технологического и социально-экономического развития России, повышения уровня жизни, создания условий и возможностей для самореализации и раскрытия таланта каждого человека</p>
+        </div>
+        <h2 style={{'padding': '1% 2%', backgroundColor: '#f5f5f5', boxShadow: '0 0 5px grey'}}>Последние новости:</h2>
         {data.loading === false
         ? data.news.map((news, index) => {
             return(

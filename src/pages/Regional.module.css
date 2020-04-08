@@ -37,12 +37,14 @@
 
 .Par {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 
 .Par p {
   background: #fff;
-  width: 30%;
+  width: 60%;
 }
 
 .Vis {
@@ -76,6 +78,10 @@
 
 
 @media (min-width: 768px) {
+  .Par {
+    flex-direction: row;
+  }
+
   .Par p {
     width: 20%;
   }
@@ -88,6 +94,10 @@
     width: 40%;
     padding: 20px;
     margin: 10px;
+  }
+  
+  .Content div:hover {
+    box-shadow: 0 0 10px grey;
   }
 }
 
