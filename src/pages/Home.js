@@ -70,8 +70,12 @@ const Home = () => {
         ? data.news.map((news, index) => {
             return(
               <div key={index} className={classes.News}>
-                <h3>{news.name}</h3>
-                <p>{news.par}</p>
+                <img src={news.img} width='150' height='150' alt="Изображение новости"/>                 
+                <div style={{'flex': '1', marginLeft: '1%'}}>
+                  <small>{news.date}</small>
+                  <h3>{news.name}</h3>
+                  <p>{news.par}</p>
+                </div>
               </div>
             )
           })

@@ -18,6 +18,11 @@
   color: gray;
 }
 
+.Link:hover,
+.Link:focus {
+  font-weight: bold;
+}
+
 .ActiveLink {
   color: #000;
   font-weight: bold;
