@@ -129,9 +129,9 @@ const Regional = ({match}) => {
         <h2>Региональный проект: {itemReg.Name_Project}</h2>
         <small>Дата начала и окончания: {itemReg.Deadlines}</small>
         <div className={classes.Par}>
-          <p>Руководитель - {itemReg.Director}</p>
-          <p>Администратор - {itemReg.Admin}</p>
-          <p>Куратор - {itemReg.Curator}</p>
+          <p><img src={itemReg.Director_img} width='150' height='150' alt="Руководитель" />Руководитель - {itemReg.Director}</p>
+          <p><img src={itemReg.Admin_img} width='150' height='150' alt="Администратор" />Администратор - {itemReg.Admin}</p>
+          <p><img src={itemReg.Curator_img} width='150' height='150' alt="Куратор" />Куратор - {itemReg.Curator}</p>
         </div>
         <h3>Общая цель: {itemReg.Target}</h3>
         <div style={{borderTop: '3px solid #dcdcdc'}}>

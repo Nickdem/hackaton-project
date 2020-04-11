@@ -54,27 +54,26 @@ const Home = () => {
   //   return (newsList)
   // }
 
-
-  const renderNews = (a, c) => {
-	  const nameProject = ["Безопасные и качественные автомобильные дороги","Культура","Цифровая экономика"];
+  const renderNews = (a, c) => {	 
 	  const news = [];
-      const datanews = a[nameProject[count]];
+    const datanews = a[data.natProjects[count].natProjectsName];
+
 	  for( let i = 0; i <= datanews.length && i < c; i++ ){
-		if(datanews[i]){
-				news.push(
-					<a href={"http://"+datanews[i].url}  className={classes.NewsLink} key={i}>
-					  <div className={classes.News}>
-						<img src={datanews[i].img_url} width='150' height='150' alt="Изображение новости" />                 
-						<div style={{'flex': '1', marginLeft: '1%'}}>
-						  <small>{datanews[i].date}&nbsp;{datanews[i].time}</small>
-						  <h3>{datanews[i].news}</h3>
-						</div>
-					  </div>
-					</a>
-				);
-		}else{
-				break;
-		}
+      if(datanews[i]){
+          news.push(
+            <a href={"http://"+datanews[i].url}  className={classes.NewsLink} key={i}>
+              <div className={classes.News}>
+              <img src={datanews[i].img_url} width='150' height='150' alt="Изображение новости" />                 
+              <div style={{'flex': '1', marginLeft: '1%'}}>
+                <small>{datanews[i].date}&nbsp;{datanews[i].time}</small>
+                <h3>{datanews[i].news}</h3>
+              </div>
+              </div>
+            </a>
+          );
+      }else {
+          break;
+      }
 	  }
 	  return news;
   }
@@ -105,7 +104,7 @@ const Home = () => {
             {renderNews(data.news[0], newsCounter)}
             <button 
               onClick={()=> setNewsCounter(newsCounter + 3)}
-              className={newsCounter >= data.news[0].length || data.news[0].length === 0 ? classes.NewsButtonHidden : classes.NewsButton}              
+              className={newsCounter >= data.news[0][data.natProjects[count].natProjectsName].length || data.news[0][data.natProjects[count].natProjectsName].length === 0 ? classes.NewsButtonHidden : classes.NewsButton}              
             >
               Показать ещё!
             </button>

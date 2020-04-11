@@ -47,6 +47,11 @@
   width: 60%;
 }
 
+.Par p img {
+  width: 60%;
+  margin: 5% 20%;
+}
+
 .Vis {
   text-align: center;
 }
