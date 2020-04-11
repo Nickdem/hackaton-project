@@ -77,6 +77,21 @@
   box-shadow: 0 0 20px grey;
 }
 
+.NewsButton {
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+}
+
+.NewsButtonHidden {
+  display: none;
+}
+
+.NewsLink {
+  text-decoration:none;
+  color:black;
+}
+
 @media (min-width: 1200px) {
   .Head {
     text-align: center;
