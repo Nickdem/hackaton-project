@@ -5,7 +5,7 @@ import {newsList} from './data/newsList'
 export function giveMeData() {
   	return async dispatch => {
     try {
-      dispatch(fetchDataSuccess(dat))
+      setTimeout(() => dispatch(fetchDataSuccess(dat)), 1500)
     } catch (e) {
       dispatch(fetchDataError(e))
     }
@@ -13,7 +13,7 @@ export function giveMeData() {
 }
 
 export function giveMeNews() {
-  return async dispatch => dispatch(fetchNewsSuccess(newsList))
+  return async dispatch => setTimeout(() => dispatch(fetchNewsSuccess(newsList)), 2000)
 }
 
 function fetchDataSuccess(projects) {
