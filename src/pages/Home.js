@@ -35,24 +35,10 @@ const Home = () => {
 
   const [newsCounter, setNewsCounter] = useState(3)
 
-  // const renderNews = (a, c) => {
-  //   const newsList = []
-
-  //   for(let i = 0; i < a.length &&  i < c; i++){
-  //     newsList.push(
-  //       <div key={i} className={classes.News}>
-  //         <img src={a[i].img} width='150' height='150' alt="Изображение новости"/>  
-  //           <div style={{'flex': '1', marginLeft: '1%'}}>
-  //           <small>{a[i].date}</small>
-  //           <h3>{a[i].name}</h3>
-  //           <p>{a[i].par}</p>
-  //         </div>
-  //       </div>
-  //     )
-  //   }
-
-  //   return (newsList)
-  // }
+  useEffect(() => {
+    setNewsCounter(3)
+    // eslint-disable-next-line
+  }, [count]);
 
   const renderNews = (a, c) => {	 
 	  const news = [];
@@ -98,9 +84,10 @@ const Home = () => {
         <div>
           <p style={{'width': '75%', textAlign: 'center', 'margin': ' 5% auto', fontSize: '24px'}}>Национальные проекты направлены на обеспечение прорывного научно-технологического и социально-экономического развития России, повышения уровня жизни, создания условий и возможностей для самореализации и раскрытия таланта каждого человека</p>
         </div>
-        <h2 style={{'padding': '1% 2%', backgroundColor: '#f5f5f5', boxShadow: '0 0 5px grey'}}>Последние новости:</h2>
-        {data.loading === false
+        
+        {data.loading === false && data.news[0]
         ? <div>
+            <h2 style={{'padding': '1% 2%', backgroundColor: '#f5f5f5', boxShadow: '0 0 5px grey'}}>Последние новости проекта {data.natProjects[count].natProjectsName.toUpperCase()}:</h2>
             {renderNews(data.news[0], newsCounter)}
             <button 
               onClick={()=> setNewsCounter(newsCounter + 3)}
