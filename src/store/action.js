@@ -1,24 +1,43 @@
-import {FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, FETCH_NEWS_SUCCESS} from './actionType'
+import {FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, FETCH_NEWS_SUCCESS, FETCH_PROJECT_SUCCESS} from './actionType'
 import {dat} from './data/db'
 import {newsList} from './data/newsList'
 
 export function giveMeData() {
   	return async dispatch => {
     try {
-      setTimeout(() => dispatch(fetchDataSuccess(dat)), 1500)
+      setTimeout(() => {
+        dispatch(fetchDataSuccess(dat))
+        dispatch(fetchNewsSuccess(newsList))
+      }, 1500)
     } catch (e) {
       dispatch(fetchDataError(e))
     }
   }
 }
 
-export function giveMeNews() {
-  return async dispatch => setTimeout(() => dispatch(fetchNewsSuccess(newsList)), 2000)
+export function giveMeProject() {
+  return async dispatch => {
+    try {
+      setTimeout(() => {
+        dispatch(fetchProjectSuccess(dat))
+      }, 1500)
+    } catch (e) {
+      dispatch(fetchDataError(e))
+    }
+  }
 }
 
 function fetchDataSuccess(projects) {
   return{
     type: FETCH_DATA_SUCCESS,
+    projects,
+    loading: false
+  }
+}
+
+function fetchProjectSuccess(projects) {
+  return{
+    type: FETCH_PROJECT_SUCCESS,
     projects,
     loading: false
   }

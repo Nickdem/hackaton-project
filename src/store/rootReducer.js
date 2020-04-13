@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux'
-import reducer from './reducer'
+import homeReducer from './homeReducer'
+import regionalReducer from './regionalReducer'
 
 export default combineReducers({
-	reducer: reducer
+	home: homeReducer,
+	regional: regionalReducer
 }) 

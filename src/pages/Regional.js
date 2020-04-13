@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {giveMeData} from '../store/action'
+import {giveMeProject} from '../store/action'
 import {Link} from "react-router-dom";
 import classes from './Regional.module.css'
 import Footer from '../components/Footer'
@@ -15,11 +15,11 @@ import {
 } from 'react-vis'
 
 const Regional = ({match}) => {
-  const store = useSelector(state => state.reducer)
+  const store = useSelector(state => state.regional)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(giveMeData());
+    dispatch(giveMeProject());
     window.scrollTo({
       top: 80,
       behavior: 'smooth'
@@ -66,7 +66,7 @@ const Regional = ({match}) => {
   }
 
   const renderSome = () => {
-    let item = store.natProjects.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
+    let item = store.project.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
     if(item === undefined){
       return (<Loader mess={"Страница не существует!"}/>)
     }

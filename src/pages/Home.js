@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {giveMeData, giveMeNews} from '../store/action'
+import {giveMeData} from '../store/action'
 import classes from './Home.module.css'
 import HomeProject from '../components/HomeProject'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
+import HomeWords from '../components/HomeWords'
+import HomeNews from '../components/HomeNews'
 
 const Home = () => {
   document.title = "Главная"
-  const data = useSelector(state => state.reducer)
+  const data = useSelector(state => state.home)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(giveMeData());
-    dispatch(giveMeNews());
     // eslint-disable-next-line
   }, []);
 
@@ -40,31 +41,6 @@ const Home = () => {
     // eslint-disable-next-line
   }, [count]);
 
-  const renderNews = (a, c) => {	 
-	  const news = [];
-    const datanews = a[data.natProjects[count].natProjectsName];
-
-	  for( let i = 0; i <= datanews.length && i < c; i++ ){
-      if(datanews[i]){
-          news.push(
-            <a href={"http://"+datanews[i].url}  className={classes.NewsLink} key={i}>
-              <div className={classes.News}>
-              <img src={datanews[i].img_url} width='150' height='150' alt="Изображение новости" />                 
-              <div style={{'flex': '1', marginLeft: '1%'}}>
-                <small>{datanews[i].date}&nbsp;{datanews[i].time}</small>
-                <h3>{datanews[i].news}</h3>
-              </div>
-              </div>
-            </a>
-          );
-      }else {
-          break;
-      }
-	  }
-	  return news;
-  }
-
-
   return (
     <>
       <div className={classes.Head}>
@@ -81,14 +57,13 @@ const Home = () => {
           </div>
         : <Loader mess={"Подождите немного! Идёт загрузка..."} />
         }
-        <div>
-          <p style={{'width': '75%', textAlign: 'center', 'margin': ' 5% auto', fontSize: '24px'}}>Национальные проекты направлены на обеспечение прорывного научно-технологического и социально-экономического развития России, повышения уровня жизни, создания условий и возможностей для самореализации и раскрытия таланта каждого человека</p>
-        </div>
+        
+        <HomeWords />
         
         {data.loading === false && data.news[0]
         ? <div>
             <h2 style={{'padding': '1% 2%', backgroundColor: '#f5f5f5', boxShadow: '0 0 5px grey'}}>Последние новости проекта {data.natProjects[count].natProjectsName.toUpperCase()}:</h2>
-            {renderNews(data.news[0], newsCounter)}
+            <HomeNews newsList={data.news[0]} counter={newsCounter} projectName={data.natProjects[count].natProjectsName} />
             <button 
               onClick={()=> setNewsCounter(newsCounter + 3)}
               className={newsCounter >= data.news[0][data.natProjects[count].natProjectsName].length || data.news[0][data.natProjects[count].natProjectsName].length === 0 ? classes.NewsButtonHidden : classes.NewsButton}              

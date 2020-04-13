@@ -1,6 +1,5 @@
 import {FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, FETCH_NEWS_SUCCESS} from './actionType'
 
-
 const initialState = {
   natProjects: [],
   news: [],
@@ -8,7 +7,7 @@ const initialState = {
   error: null
 }
 
-export default function reducer(state = initialState, action) {
+export default function homeReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_DATA_SUCCESS:
       return {
