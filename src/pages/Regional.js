@@ -13,6 +13,8 @@ import {
   HorizontalGridLines,
   VerticalBarSeries
 } from 'react-vis'
+import RegionalNav from '../components/RegionalNav';
+import RegionalAbout from '../components/RegionalAbout';
 
 const Regional = ({match}) => {
   const store = useSelector(state => state.regional)
@@ -20,6 +22,10 @@ const Regional = ({match}) => {
 
   useEffect(() => {
     dispatch(giveMeProject());
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     // eslint-disable-next-line
   }, []);
 
@@ -116,28 +122,22 @@ const Regional = ({match}) => {
 
     return(
       <div className={classes.Reg}>
-        <h1>Национальный проект: {item.natProjectsName}</h1>
-        <ol className={classes.Links}>
-          {item.regPrjcts.map((reg, index) => (
-            <li key={index}>
-              <Link 
-                className={reg.url_protocol !== match.params.id ? classes.Link : classes.ActiveLink} 
-                to={`/regional-project/${reg.url_protocol}`}
-                onClick={reg.url_protocol !== match.params.id ? null : e => e.preventDefault()}
-              >
-                {reg.Name_Project}
-              </Link>
-            </li>
-          ))}
-        </ol>
-        <h2>Региональный проект: {itemReg.Name_Project}</h2>
-        <small>Дата начала и окончания: {itemReg.Deadlines}</small>
-        <div className={classes.Par}>
-          <p><img src={itemReg.Director_img} width='150' height='150' alt="Руководитель" />Руководитель - {itemReg.Director}</p>
-          <p><img src={itemReg.Admin_img} width='150' height='150' alt="Администратор" />Администратор - {itemReg.Admin}</p>
-          <p><img src={itemReg.Curator_img} width='150' height='150' alt="Куратор" />Куратор - {itemReg.Curator}</p>
-        </div>
-        <h3>Общая цель: {itemReg.Target}</h3>
+        <RegionalNav
+          natName={item.natProjectsName} 
+          regProjects={item.regPrjcts} 
+          id={match.params.id}
+        />
+        <RegionalAbout 
+          regName={itemReg.Name_Project}
+          deadLines={itemReg.Deadlines}
+          directorImg={itemReg.Director_img}
+          director={itemReg.Director}
+          adminImg={itemReg.Admin_img}
+          admin={itemReg.Admin}
+          curatorImg={itemReg.Curator_img}
+          curator={itemReg.Curator}
+          target={itemReg.Target}
+        />
         <div style={{borderTop: '3px solid #dcdcdc'}}>
           <h3>Результаты:</h3>
           <button className={classes.Button} onClick={()=> buttonClickHandler()}>{buttonName}</button>

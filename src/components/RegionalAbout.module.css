@@ -1,0 +1,44 @@
+.Par {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 1%;
+}
+  
+.Par p {
+background: #fff;
+width: 60%;
+border: 2px solid #dcdcdc; 
+border-radius: 10px;
+text-align: center;
+}
+
+.Par p:hover {
+transform: scale(1.1);
+transition: all .3s ease;
+}
+
+.Par p img {
+width: 60%;
+margin: 5% 20%;
+}
+
+@media (min-width: 768px) {
+.Par {
+    flex-direction: row;
+    align-items: flex-start;
+    }
+
+    .Par p {
+    width: 20%;
+    }
+}
+
+@media (min-width: 1200px) {
+.Par p {
+    width: 15%;
+}
+}

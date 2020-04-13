@@ -1,0 +1,24 @@
+.Links {
+  display: flex;
+  flex-direction: column;
+}
+
+.Links a {
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.Link {
+  color: gray;
+}
+
+.Link:hover,
+.Link:focus {
+  font-weight: bold;
+}
+
+.ActiveLink {
+  color: #000;
+  font-weight: bold;
+  cursor: text;
+}
