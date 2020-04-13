@@ -5,16 +5,11 @@ import {Link} from "react-router-dom";
 import classes from './Regional.module.css'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
-  VerticalBarSeries
-} from 'react-vis'
 import RegionalNav from '../components/RegionalNav';
 import RegionalAbout from '../components/RegionalAbout';
+import RegionalCharts from '../components/RegionalCharts';
+import RegionalTable from '../components/RegionalTable';
+import RegionalTargetList from '../components/RegionalTargetList';
 
 const Regional = ({match}) => {
   const store = useSelector(state => state.regional)
@@ -28,39 +23,6 @@ const Regional = ({match}) => {
     })
     // eslint-disable-next-line
   }, []);
-
-  const renderTh = (th) => {
-    return th.map((column, index) => (
-      <th key={index}>
-        { column === "Name" ? "Наименование показателя" : column}
-      </th>
-    ))
-  }
-  
-   const renderTd = (td) => {
-    return td.map((column, index) => (
-      <td key={index}>
-        {column}
-      </td>
-    ))
-  }
-
-  const renderTr = (tr) => {
-    return tr.map((row, index) => (
-      <tr key={index}>
-        {renderTd(tr[index])}
-      </tr>
-    ))
-  }
-
-  const renderDiv = (d) => {
-    return d.map((el, index) => (
-      <div key={index}>
-        <strong>{index + 1}.</strong>
-        {el[0]}
-      </div>
-    ))
-  }
 
   const [buttonName, setButtonName] = useState('Показать таблицей')
   const [drawer, setDrawer] = useState(false)
@@ -77,49 +39,15 @@ const Regional = ({match}) => {
 
   const renderSome = () => {
     let item = store.project.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
+    
     if(item === undefined){
       return (<Loader mess={"Страница не существует!"}/>)
     }
+
     let itemReg = item.regPrjcts.find(i=> i.url_protocol === match.params.id)
 
     document.title = `${itemReg.Name_Project}`
-    const renderChart = (k,width,height,idtext) => {
-      const datas=[]
-
-      for(let i=1;i<itemReg.tables1.data[0].length;i++){
-        if(itemReg.tables1.data[k][i] !== 'н/д'){
-          datas.push({x:itemReg.tables1.columns[i],y:parseFloat(itemReg.tables1.data[k][i].replace(",", "."))})
-        }
-      }
-
-      return(
-        <div className={classes.Chart}>
-          <p id={idtext}>{itemReg.tables1.data[k][0]}</p>
-
-          <XYPlot margin={{bottom: 70}} xType="ordinal" width={width} height={height}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis tickLabelAngle={-45} />
-          <YAxis />
-          <VerticalBarSeries
-            data={datas}
-          />
-
-          </XYPlot>
-        </div>
-      )
-    }
-
-    const renderVis = () => {
-      const listCharts=[];
-      for (let i = 0; i < itemReg.tables1.data.length; i++ ){
-        listCharts.push(<div key={i}>{renderChart(i,300,300)}</div>);
-      }
-      return (
-        listCharts
-      )
-    }
-
+    
     return(
       <div className={classes.Reg}>
         <RegionalNav
@@ -142,27 +70,22 @@ const Regional = ({match}) => {
           <h3>Результаты:</h3>
           <button className={classes.Button} onClick={()=> buttonClickHandler()}>{buttonName}</button>
           {!drawer
-           ?<div className={classes.Vis}>
-              {renderVis()}
-            </div>
-           :<table>
-              <tbody>
-                <tr>
-                  {renderTh(itemReg.tables1.columns)}
-                </tr>
-
-              {renderTr(itemReg.tables1.data)}
-
-              </tbody>
-            </table>
+           ?
+            <RegionalCharts
+              tables={itemReg.tables1}
+            />
+           :
+            <RegionalTable 
+              tables={itemReg.tables1}
+            />
           }
           {match.params.id === 'bkad1'
           // eslint-disable-next-line
           ? <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a264c5718698326333e8ae05ff8ed8e74fdc540c1eba298df08333907715721&amp;source=constructor" className={classes.Frame} frameBorder="0"></iframe>
           : null}
-          <div className={classes.Content}>
-                {renderDiv(itemReg.tables.data)}
-          </div>
+          <RegionalTargetList 
+            targetList={itemReg.tables.data}
+          />
         </div>
       </div>
     )

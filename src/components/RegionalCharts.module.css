@@ -1,0 +1,13 @@
+.Vis {
+  text-align: center;
+  margin: 1% 0;
+}
+  
+.Chart {
+  border: 2px solid #dcdcdc;  
+  margin-top: 15px;
+}
+
+.Chart div {
+  margin: 0 auto;
+}
