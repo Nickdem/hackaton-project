@@ -20,25 +20,29 @@ const Regional = ({match}) => {
 
   useEffect(() => {
     dispatch(giveMeProject());
-    window.scrollTo({
-      top: 80,
-      behavior: 'smooth'
-    })
     // eslint-disable-next-line
   }, []);
 
   const renderTh = (th) => {
     return th.map((column, index) => (
-      <th key={index} style={{'border': '1px solid black'}}>
-        {column}
+      <th key={index}>
+        { column === "Name" ? "Наименование показателя" : column}
       </th>
+    ))
+  }
+  
+   const renderTd = (td) => {
+    return td.map((column, index) => (
+      <td key={index}>
+        {column}
+      </td>
     ))
   }
 
   const renderTr = (tr) => {
     return tr.map((row, index) => (
       <tr key={index}>
-        {renderTh(tr[index])}
+        {renderTd(tr[index])}
       </tr>
     ))
   }
@@ -83,7 +87,7 @@ const Regional = ({match}) => {
       }
 
       return(
-        <div>
+        <div className={classes.Chart}>
           <p id={idtext}>{itemReg.tables1.data[k][0]}</p>
 
           <XYPlot margin={{bottom: 70}} xType="ordinal" width={width} height={height}>
@@ -136,12 +140,12 @@ const Regional = ({match}) => {
         <h3>Общая цель: {itemReg.Target}</h3>
         <div style={{borderTop: '3px solid #dcdcdc'}}>
           <h3>Результаты:</h3>
-          <button onClick={()=> buttonClickHandler()}>{buttonName}</button>
+          <button className={classes.Button} onClick={()=> buttonClickHandler()}>{buttonName}</button>
           {!drawer
            ?<div className={classes.Vis}>
               {renderVis()}
             </div>
-           :<table style={{'border': '1px solid black', 'width': '80%', 'margin': '45px auto 45px'}}>
+           :<table>
               <tbody>
                 <tr>
                   {renderTh(itemReg.tables1.columns)}

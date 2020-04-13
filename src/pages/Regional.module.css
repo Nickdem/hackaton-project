@@ -1,3 +1,29 @@
+table {
+  font-size: 14px;
+  border-collapse: collapse;
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+th, td:first-child {
+  background: rgb(18, 147, 154);  
+  padding: 0;
+}
+
+th, td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+}
+
+td {
+  background: rgb(65, 187, 193);
+}
+
+th:first-child, td:first-child {
+  text-align: left;
+}
+
 .Head {
   display: flex;
   justify-content: space-between;
@@ -40,11 +66,22 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 1%;
 }
 
 .Par p {
   background: #fff;
   width: 60%;
+  border: 2px solid #dcdcdc; 
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Par p:hover {
+  transform: scale(1.1);
+  transition: all .3s ease;
 }
 
 .Par p img {
@@ -54,9 +91,15 @@
 
 .Vis {
   text-align: center;
+  margin: 1% 0;
 }
 
-.Vis div {
+.Chart {
+  border: 2px solid #dcdcdc;  
+  margin-top: 15px;
+}
+
+.Chart div {
   margin: 0 auto;
 }
 
@@ -81,10 +124,32 @@
   margin: 5px;
 }
 
+.Button {
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+}
+
+.Button:hover,
+.Button:focus {
+  background-color: #333333;
+  box-shadow: 0 0 10px grey;
+  color: #fff;
+}
 
 @media (min-width: 768px) {
+  table {
+    margin: 1% 0;
+    font-size: 16px;
+  }
+
+  th, td:first-child {
+    padding: 10px 20px;
+  }
+
   .Par {
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .Par p {
@@ -103,6 +168,8 @@
   
   .Content div:hover {
     box-shadow: 0 0 10px grey;
+    transform: scale(1.1);
+    transition: all .3s ease;
   }
 }
 

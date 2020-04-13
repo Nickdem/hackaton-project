@@ -26,5 +26,7 @@
 
   .News:hover {
     box-shadow: 0 0 10px grey;
+    transform: scale(1.02);
+    transition: all .3s ease;
   }
 }
