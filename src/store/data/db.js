@@ -10,6 +10,10 @@ const db9 = require('./Kadry_dlja_tsifrovoj_ekonomiki.json')
 const db10 = require('./Tsifrovoe_gosudarstvennoe_upravlenie.json')
 const db11 = require('./Tsifrovye_tehnologii.json')
 
+const news = require('./newsdata.json')
+
+export const newsList = [news]
+
 const dataBKAD = []
 
 dataBKAD.push(db1,db2,db3)

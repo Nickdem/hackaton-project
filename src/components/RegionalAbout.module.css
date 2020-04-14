@@ -8,22 +8,24 @@
   padding: 1%;
 }
   
-.Par p {
+.Par div {
   background: #fff;
   width: 60%;
   border: 2px solid #dcdcdc; 
   border-radius: 10px;
   text-align: center;
+  margin: 10px 0;
 }
 
-.Par p:hover {
+.Par div:hover {
   transform: scale(1.1);
   transition: all .3s ease;
 }
 
-.Par p img {
-  width: 60%;
-  margin: 5% 20%;
+.Par div img {
+  width: 150px;
+  height: 150px;
+  margin: 5% auto;
 }
 
 @media (min-width: 768px) {
@@ -32,13 +34,13 @@
     align-items: flex-start;
   }
 
-  .Par p {
-    width: 20%;
+  .Par div {
+    width: 30%;
   }
 }
 
 @media (min-width: 1200px) {
-  .Par p {
+  .Par div {
     width: 15%;
   }
 }

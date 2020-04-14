@@ -1,7 +1,7 @@
 import {FETCH_PROJECT_SUCCESS, FETCH_DATA_ERROR} from './actionType'
 
 const initialState = {
-    projects: [],
+    project: [],
     loading: true,
     error: null
 }

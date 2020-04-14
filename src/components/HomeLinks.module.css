@@ -1,0 +1,33 @@
+.Links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+  
+.Link {
+  margin: 1% 2%;
+  cursor: pointer;
+  color: #d3d3d3;
+}
+  
+.Link:hover,
+.Link:focus {
+  color: #fffafa;
+}
+  
+.ActiveLink {
+  margin: 1% 2%;
+  color: white;
+  border-bottom: 2px solid white;
+  cursor: not-allowed;
+}
+
+@media (min-width: 1200px) {   
+  .Links {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    color: white;
+  }
+}

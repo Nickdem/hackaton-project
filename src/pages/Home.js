@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Loader from '../components/Loader'
 import HomeWords from '../components/HomeWords'
 import HomeNews from '../components/HomeNews'
+import HomeLinks from '../components/HomeLinks'
 
 const Home = () => {
   document.title = "Главная"
@@ -19,19 +20,11 @@ const Home = () => {
   }, []);
 
   const [count, setCount] = useState(0)
-
+  
   const customStyle = {
     'cul': classes.Cul,
     'digeco': classes.DigEco,
     'bkad': classes.Bkad
-  }
-
-  const renderLinks = () => {
-	  return data.natProjects.map((prjct, index) => (
-      <h3 key={index} className={count !== index ? classes.Link : classes.ActiveLink} onClick={()=>setCount(index)}>
-        {prjct.natProjectsName}
-      </h3>
-    ))
   }
 
   const [newsCounter, setNewsCounter] = useState(3)
@@ -41,6 +34,10 @@ const Home = () => {
     // eslint-disable-next-line
   }, [count]);
 
+  const linksClickHandler = (c) => {
+    setCount(c)
+  }
+
   return (
     <>
       <div className={classes.Head}>
@@ -48,7 +45,7 @@ const Home = () => {
       </div>
         {data.loading === false
         ? <div className={customStyle[data.natProjects[count].natProjectsUrl] ? customStyle[data.natProjects[count].natProjectsUrl] : classes.Content}>
-            <div className={classes.Links}>{renderLinks()}</div>
+            <HomeLinks links={data.natProjects} counter={count} clickHandler={linksClickHandler}/>
             <div className={classes.Wrapper}>
               <button className={classes.Button} onClick={()=> count === 0 ? setCount(data.natProjects.length - 1) : setCount(count - 1)}></button>
               <HomeProject natProject={data.natProjects[count]}/>
@@ -60,7 +57,7 @@ const Home = () => {
         
         <HomeWords />
         
-        {data.loading === false && data.news[0]
+        {data.news[0]
         ? <div>
             <h2 style={{'padding': '1% 2%', backgroundColor: '#f5f5f5', boxShadow: '0 0 5px grey'}}>Последние новости проекта {data.natProjects[count].natProjectsName.toUpperCase()}:</h2>
             <HomeNews newsList={data.news[0]} counter={newsCounter} projectName={data.natProjects[count].natProjectsName} />

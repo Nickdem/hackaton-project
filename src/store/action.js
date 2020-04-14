@@ -1,6 +1,5 @@
 import {FETCH_DATA_SUCCESS, FETCH_DATA_ERROR, FETCH_NEWS_SUCCESS, FETCH_PROJECT_SUCCESS} from './actionType'
-import {dat} from './data/db'
-import {newsList} from './data/newsList'
+import {dat, newsList} from './data/db'
 
 export function giveMeData() {
   	return async dispatch => {
@@ -8,7 +7,7 @@ export function giveMeData() {
       setTimeout(() => {
         dispatch(fetchDataSuccess(dat))
         dispatch(fetchNewsSuccess(newsList))
-      }, 1500)
+      }, 500)
     } catch (e) {
       dispatch(fetchDataError(e))
     }
@@ -20,7 +19,7 @@ export function giveMeProject() {
     try {
       setTimeout(() => {
         dispatch(fetchProjectSuccess(dat))
-      }, 1500)
+      }, 500)
     } catch (e) {
       dispatch(fetchDataError(e))
     }
