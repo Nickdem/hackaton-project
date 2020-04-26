@@ -1,7 +1,11 @@
 import React from 'react'
 import classes from './Loader.module.css'
 
-const Loader = ({mess}) => (
+interface Loader {
+  mess: string
+}
+
+const Loader: React.FC<Loader> = ({mess}) => (
   <h1 className={classes.Loader}>{mess}</h1>
 )
 

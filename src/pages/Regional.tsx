@@ -10,9 +10,10 @@ import RegionalAbout from '../components/RegionalAbout';
 import RegionalCharts from '../components/RegionalCharts';
 import RegionalTable from '../components/RegionalTable';
 import RegionalTargetList from '../components/RegionalTargetList';
+import { IRegData, IRegState, INatProject, IRegPrjct } from '../interfaces';
 
-const Regional = ({match}) => {
-  const store = useSelector(state => state.regional)
+const Regional: React.FC = ({match}: any) => {
+  const store: IRegData | any = useSelector<IRegState>(state => state.regional)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -24,8 +25,8 @@ const Regional = ({match}) => {
     // eslint-disable-next-line
   }, []);
 
-  const [buttonName, setButtonName] = useState('Показать таблицей')
-  const [drawer, setDrawer] = useState(false)
+  const [buttonName, setButtonName] = useState<string>('Показать таблицей')
+  const [drawer, setDrawer] = useState<boolean>(false)
 
   const buttonClickHandler = () => {
     if(buttonName === "Показать таблицей"){
@@ -38,13 +39,13 @@ const Regional = ({match}) => {
   }
 
   const renderSome = () => {
-    let item = store.project.find(prjct => prjct.regPrjcts.find(item => item.url_protocol === match.params.id))
+    let item = store.project.find((prjct: INatProject) => prjct.regPrjcts.find((item: IRegPrjct) => item.url_protocol === match.params.id))
     
     if(item === undefined){
       return (<Loader mess={"Страница не существует!"}/>)
     }
 
-    let itemReg = item.regPrjcts.find(i=> i.url_protocol === match.params.id)
+    let itemReg = item.regPrjcts.find((i: IRegPrjct) => i.url_protocol === match.params.id)
 
     document.title = `${itemReg.Name_Project}`
     
@@ -79,10 +80,11 @@ const Regional = ({match}) => {
               tables={itemReg.tables1}
             />
           }
-          {match.params.id === 'bkad1'
+          {//match.params.id === 'bkad1'
           // eslint-disable-next-line
-          ? <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a264c5718698326333e8ae05ff8ed8e74fdc540c1eba298df08333907715721&amp;source=constructor" className={classes.Frame} frameBorder="0"></iframe>
-          : null}
+          //? <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0a264c5718698326333e8ae05ff8ed8e74fdc540c1eba298df08333907715721&amp;source=constructor" className={classes.Frame} frameBorder="0"></iframe>
+          //: null
+          }
           <RegionalTargetList 
             targetList={itemReg.tables.data}
           />

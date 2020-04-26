@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Footer.module.css'
 
-const Footer = () => (
+const Footer: React.FC = () => (
 	<div className={classes.Footer}>
       <span>Сделано на React+Redux</span>
       <div>

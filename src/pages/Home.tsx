@@ -8,10 +8,11 @@ import Loader from '../components/Loader'
 import HomeWords from '../components/HomeWords'
 import HomeNews from '../components/HomeNews'
 import HomeLinks from '../components/HomeLinks'
+import { IHomeState, IHomeData } from '../interfaces'
 
-const Home = () => {
+const Home: React.FC = () => {
   document.title = "Главная"
-  const data = useSelector(state => state.home)
+  const data: IHomeData | any = useSelector<IHomeState>(state => state.home)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,22 +20,22 @@ const Home = () => {
     // eslint-disable-next-line
   }, []);
 
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState<number>(0)
   
-  const customStyle = {
+  const customStyle: any = {
     'cul': classes.Cul,
     'digeco': classes.DigEco,
     'bkad': classes.Bkad
   }
 
-  const [newsCounter, setNewsCounter] = useState(3)
+  const [newsCounter, setNewsCounter] = useState<number>(3)
 
   useEffect(() => {
     setNewsCounter(3)
     // eslint-disable-next-line
   }, [count]);
 
-  const linksClickHandler = (c) => {
+  const linksClickHandler = (c: number) => {
     setCount(c)
   }
 

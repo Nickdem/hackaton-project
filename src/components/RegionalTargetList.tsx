@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './RegionalTargetList.module.css'
 
-const RegionalTargetList = ({targetList}) => {
-  const renderDiv = (d) => {
-    return d.map((el, index) => (
+const RegionalTargetList: React.FC<any> = ({targetList}) => {
+  const renderDiv = (d: string[]) => {
+    return d.map((el: string, index: number) => (
       <div key={index}>
         <strong>{index + 1}.</strong>
           {el[0]}

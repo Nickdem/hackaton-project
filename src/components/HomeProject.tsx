@@ -1,9 +1,14 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import classes from './HomeProject.module.css'
+import { INatProject } from '../interfaces'
 
-const HomeProject = ({natProject}) => {
-  const renderRegPrjct = (some) => {
+interface HomeProject {
+  natProject: INatProject
+}
+
+const HomeProject: React.FC<HomeProject> = ({natProject}) => {
+  const renderRegPrjct = (some: INatProject) => {
     return some.regPrjcts.map((prjct, index) => (
       <li key={index}>
         <Link  to={'/regional-project/' + prjct.url_protocol}>

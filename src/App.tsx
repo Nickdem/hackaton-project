@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import Regional from './pages/Regional'
 import {Route, Switch, Redirect} from 'react-router-dom'
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Switch>
